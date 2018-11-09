@@ -1,34 +1,23 @@
-/*
- * Copyright (c) 2014-2018 Cesanta Software Limited
- * All rights reserved
- *
- * Licensed under the Apache License, Version 2.0 (the ""License"");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an ""AS IS"" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 #include "mgos.h"
 #include "mgos_wifi.h"
 
-int counter = 0;
-static void timer_cb(void *arg)
-{
-
-  LOG(LL_INFO, ("Hello world %d", counter++));
-  (void)arg;
-}
+const struct mgos_config_wifi_ap config;
 
 enum mgos_app_init_result mgos_app_init(void)
 {
-  mgos_set_timer(5000, MGOS_TIMER_REPEAT, timer_cb, NULL);
-  LOG(LL_INFO, ("Hello world !"));
+  // config.enable = 1;
+  // config.ssid = "Incubator__??????";
+  // config.pass = "12345678";
+  // config.hidden = 0;
+  // config.channel = 6;
+  // config.max_connections = 2;
+  // config.ip = "192.168.4.1";         // Static IP Address
+  // config.netmask = "255.255.255.0";  // Static Netmas
+  // config.gw = "192.168.4.1";         // Static Default Gatway
+  // config.dhcp_start = "192.168.4.2"; // DHCP Start Addres
+  // config.dhcp_end = "192.168.4.100"; // DHCP End Addres
+  // config.trigger_on_gpio = -1;       // Trigger AP on low GPI
+
+  mgos_wifi_setup_ap(&config);
   return MGOS_APP_INIT_SUCCESS;
 }

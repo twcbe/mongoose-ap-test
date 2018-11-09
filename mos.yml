@@ -22,12 +22,36 @@ filesystem:
 # Below is a custom firmware configuration example.
 # Uncomment and modify according to your needs:
 
-# config_schema:
-#   - ["wifi.ap.enable", "b", true, { title: "Enable wifi AP" }]
-  # - ["my_app", "o", { title: "My app custom settings" }]
-#  - ["my_app.bool_value", "b", false, {title: "Some boolean value"}]
-#  - ["my_app.string_value", "s", "", {title: "Some string value"}]
-#  - ["my_app.int_value", "i", 123, {title: "Some integer value"}]
+config_schema:
+  - ["wifi.ap", "o", { title: "WiFi Access Point" }]
+  - ["wifi.ap.enable", "b", true, { title: "Enable" }]
+  - ["wifi.ap.ssid", "s", "Mongoose_??????", { title: "SSID" }]
+  - ["wifi.ap.pass", "s", "Mongoose", { title: "Password", type: "password" }]
+  - ["wifi.ap.hidden", "b", false, { title: "Hide SSID" }]
+  - ["wifi.ap.channel", "i", 6, { title: "Channel" }]
+  - ["wifi.ap.max_connections", "i", 10, { title: "Max connections" }]
+  - ["wifi.ap.ip", "s", "192.168.4.1", { title: "IP address" }]
+  - ["wifi.ap.netmask", "s", "255.255.255.0", { title: "Network Mask" }]
+  - ["wifi.ap.gw", "s", "192.168.4.1", { title: "Default Gateway" }]
+  - ["wifi.ap.dhcp_start", "s", "192.168.4.2", { title: "DHCP Start Address" }]
+  - ["wifi.ap.dhcp_end", "s", "192.168.4.100", { title: "DHCP End Address" }]
+  - ["wifi.ap.trigger_on_gpio", "i", -1, { title: "Trigger AP on low GPIO" }]
+  - [
+      "wifi.ap.disable_after",
+      "i",
+      0,
+      {
+        title: "If > 0, will disable itself after the specified number of seconds",
+      },
+    ]
+  - [
+      "wifi.ap.hostname",
+      "s",
+      "",
+      {
+        title: "If not empty, DNS server will resolve given host name to the IP address of AP",
+      },
+    ]
 
 # These settings get compiled into the C structure, and can be accessed
 # from the C code this way:
