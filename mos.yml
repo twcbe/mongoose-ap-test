@@ -52,6 +52,13 @@ config_schema:
         title: "If not empty, DNS server will resolve given host name to the IP address of AP",
       },
     ]
+  - [ "portal.wifi.enable", "b", true, {title: "Enable WiFi captive portal on device boot"}]
+  - [ "portal.wifi.rpc", "b", true, {title: "Enable Captive Portal RPC Endpoint regardless of whether captive portal is enabled/started"}]
+  - [ "portal.wifi.gzip", "b", true, {title: "Whether or not to serve gzip HTML file (set to false to serve standard HTML for dev)"}]
+  - [ "portal.wifi.hostname", "s", "setup.device.portal", {title: "Hostname to use for captive portal redirect"}]
+  - [ "portal.wifi.copy", "b", true, {title: "Copy SSID and Password to wifi.sta after succesful test"}]
+  - [ "portal.wifi.disable", "i", 2, {title: "0 - do nothing, 1 - Disable AP (wifi.ap.enable), 2 - Disable AP and Captive Portal (portal.wifi.enable) -- after successful test and copy/save values"}]
+  - [ "portal.wifi.reboot", "i", 15, {title: "0 to disable, or value (in seconds) to wait and then reboot device, after successful test (and copy/save values)"}]
 
 # These settings get compiled into the C structure, and can be accessed
 # from the C code this way:
@@ -78,6 +85,9 @@ libs:
   - origin: https://github.com/mongoose-os-libs/rpc-uart
   - origin: https://github.com/mongoose-os-libs/wifi
   - origin: https://github.com/mongoose-os-libs/http-server
+  - origin: https://github.com/mongoose-os-libs/rpc-service-wifi
+  - origin: https://github.com/mongoose-os-libs/rpc-common
+  - origin: https://github.com/tripflex/wifi-captive-portal
 
 # Used by the mos tool to catch mos binaries incompatible with this file format
 manifest_version: 2017-09-29
