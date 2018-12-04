@@ -23,6 +23,7 @@ filesystem:
 # Uncomment and modify according to your needs:
 
 config_schema:
+  - ["room_id", "s", "<room-id>", {"title": "unique calendar identified of the room"}]
   - ["wifi.ap", "o", { title: "WiFi Access Point" }]
   - ["wifi.ap.enable", "b", true, { title: "Enable" }]
   - ["wifi.ap.ssid", "s", "Incubator_??????", { title: "SSID" }]
